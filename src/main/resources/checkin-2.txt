@@ -1,0 +1,3 @@
+enabling logs in application.properties, at controller level using lombok @sl4j, inside classes see department controller
+customising error messages as ResponseStatusException  though respose entity has headers and body in json object response in depratment.findById(Intiger id) method
+converting type if second argument in JPARepository<> method from Long to Integer 

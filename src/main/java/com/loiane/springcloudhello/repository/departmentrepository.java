@@ -7,6 +7,6 @@ import com.loiane.springcloudhello.model.Contact;
 import com.loiane.springcloudhello.model.department;
 
 @Repository
-public interface departmentrepository extends JpaRepository<department, Long>{
+public interface departmentrepository extends JpaRepository<department, Integer>{
 
 }
