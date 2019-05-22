@@ -1,0 +1,44 @@
+CREATE TABLE `department` (
+	`deptno` INT(11) NOT NULL,
+	`departmentname` VARCHAR(255) NULL DEFAULT NULL,
+	`loc` VARCHAR(255) NULL DEFAULT NULL,
+	PRIMARY KEY (`deptno`)
+)ENGINE=InnoDB;
+
+CREATE TABLE `employee` (
+	`empno` INT(11) NOT NULL,
+	`deptno` INT(11) NOT NULL,
+	`ename` VARCHAR(255) NULL DEFAULT NULL,
+	`job` VARCHAR(255) NULL DEFAULT NULL,
+	`mgr` INT(11) NOT NULL,
+	`sal` INT(11) NOT NULL,
+	PRIMARY KEY (empno)
+)ENGINE=InnoDB;
+
+ALTER TABLE employee
+  ADD CONSTRAINT FOREIGN KEY (deptno) REFERENCES department (deptno);
+
+insert into department (deptno,departmentname,loc)
+values
+(10, 'ACCOUNTING', 'NEW YORK'),
+(20, 'RESEARCH', 'DALLAS'),
+(30, 'SALES', 'CHICAGO');
+
+
+
+insert into employee (empno,deptno,ename,job,mgr,sal)
+values
+      (7839, 'KING', 'PRESIDENT',0,5000,10),
+		(7698, 'BLAKE', 'MANAGER',7839, 2850,30),
+		(7782, 'CLARK', 'MANAGER', 7839,2450,10),
+		(7566, 'JONES', 'MANAGER', 7839,2975,20),
+		(7788, 'SCOTT', 'ANALYST', 7566,3000,20),
+		(7902, 'FORD', 'ANALYST', 7566,3000,20),
+		(7499, 'ALLEN', 'SALESMAN', 7698,1600,30),
+		(7521, 'WARD', 'SALESMAN', 7698,1250,30),
+		(7876, 'ADAMS', 'CLERK', 7788, 1100,20),
+		(7900, 'JAMES', 'CLERK', 7698, 950,30);
+		
+		
+
+
