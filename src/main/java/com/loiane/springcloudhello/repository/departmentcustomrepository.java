@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
-import com.loiane.springcloudhello.join.componentclasses.leftjoindepartmentonemployee;
+
 import com.loiane.springcloudhello.model.department;
 
 @Repository

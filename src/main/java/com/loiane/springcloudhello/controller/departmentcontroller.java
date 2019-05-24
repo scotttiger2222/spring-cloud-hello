@@ -23,7 +23,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.loiane.springcloudhello.join.componentclasses.leftjoindepartmentonemployee;
+
 import com.loiane.springcloudhello.model.department;
 import com.loiane.springcloudhello.model.employee;
 import com.loiane.springcloudhello.repository.departmentrepository;
@@ -33,6 +33,8 @@ import com.loiane.springcloudhello.service.departmentserviceimpl;
 
 import lombok.extern.slf4j.Slf4j;
 
+import com.loiane.springcloudhello.getjson.jsonclient1;
+
 @Slf4j
 @RestController
 @RequestMapping("/department")
@@ -41,27 +43,29 @@ public class departmentcontroller {
 	private departmentrepository deptrepository;
 	private departmentserviceimpl        deptserviceimpl;
 	private departmentcustomrepository departmentcustomrepository;
+	private com.loiane.springcloudhello.getjson.jsonclient1 jsonclient1;
 	
 	
 	
 	Logger	logger = LoggerFactory.getLogger(departmentcontroller.class);
 		
-	public departmentcontroller(departmentrepository deptrepository ,departmentserviceimpl deptserviceimpl,departmentcustomrepository departmentcustomrepository) {
+	public departmentcontroller(departmentrepository deptrepository ,departmentserviceimpl deptserviceimpl,departmentcustomrepository departmentcustomrepository, jsonclient1 jsonclient1) {
 		super();
 		this.deptrepository = deptrepository;
 		this.deptserviceimpl= deptserviceimpl;
 		this.departmentcustomrepository=departmentcustomrepository;
+		this.jsonclient1 = jsonclient1;
 	}
 
 	@GetMapping
     public List findAll(){
     	
-		deptrepository.save(new department(10, "ACCOUNTING", "NEW YORK"));
+	/*	deptrepository.save(new department(10, "ACCOUNTING", "NEW YORK"));
 		deptrepository.save(new department(20, "RESEARCH", "DALLAS"));
 		deptrepository.save(new department(30, "SALES", "CHICAGO"));
-		
+	*/	
     	
-		
+		jsonclient1.jsonclient1gettestjson();
 		
 		
         return deptrepository.findAll();
