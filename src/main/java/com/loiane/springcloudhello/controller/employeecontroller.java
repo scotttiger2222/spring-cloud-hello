@@ -31,7 +31,7 @@ public class employeecontroller {
     	
 		
 		
-		
+	/*	
 		 emprepository.save(new employee(7839, "KING", "PRESIDENT", 0,5000, 10));
 			emprepository.save(new employee(7698, "BLAKE", "MANAGER",7839, 2850, 30));
 			emprepository.save(new employee(7782, "CLARK", "MANAGER", 7839,2450,  10));
@@ -42,7 +42,7 @@ public class employeecontroller {
 			emprepository.save(new employee(7521, "WARD", "SALESMAN", 7698,1250,  30));
 			emprepository.save(new employee(7876, "ADAMS", "CLERK", 7788, 1100,  20));
 			emprepository.save(new employee(7900, "JAMES", "CLERK", 7698, 950,  30));
-				
+		*/		
     	
         return emprepository.findAll();
     }
