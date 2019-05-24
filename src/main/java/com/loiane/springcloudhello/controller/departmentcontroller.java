@@ -23,7 +23,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.server.ResponseStatusException;
 
-
+import com.loiane.springcloudhello.join.componentclasses.leftjoindepartmentonemployee;
 import com.loiane.springcloudhello.model.department;
 import com.loiane.springcloudhello.model.employee;
 import com.loiane.springcloudhello.repository.departmentrepository;
@@ -40,7 +40,7 @@ public class departmentcontroller {
 
 	private departmentrepository deptrepository;
 	private departmentserviceimpl        deptserviceimpl;
-	departmentcustomrepository departmentcustomrepository;
+	private departmentcustomrepository departmentcustomrepository;
 	
 	
 	
@@ -163,6 +163,18 @@ public class departmentcontroller {
     	
     	
     }
+    
+    
+    
+    
+    @GetMapping("/joinfindalldepartmentandtheiremployee")
+    List <Object> joinfindalldepartmentandtheiremployeebydeptnonamedparams() {
+    	
+                 return  departmentcustomrepository.fetchdeptempdataleftjoin();
+    	
+    	
+    }
+    
     
     
 	
