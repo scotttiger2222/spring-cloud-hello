@@ -19,7 +19,7 @@ public class jsonclient1 {
 	  Logger log = LoggerFactory.getLogger(jsonclient1.class);
 	        RestTemplate restTemplate = new RestTemplate();
 	        Quote quote = restTemplate.getForObject("https://gturnquist-quoters.cfapps.io/api/random", Quote.class);
-	        log.info(quote.toString());
+	        log.info("JSON FEED FROM https://gturnquist-quoters.cfapps.io/api/random------------------------"+quote.toString());
 	    
 	}
 }

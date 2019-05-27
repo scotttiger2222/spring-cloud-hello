@@ -37,7 +37,7 @@ public class RequestResponseLoggingFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         logger.info(
-          "Logging Request  {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}} : {}", req.getMethod(), 
+          "Logging Request  {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{request filter is active}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}} : {}", req.getMethod(), 
           req.getRequestURI());
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession mySession=   attr.getRequest().getSession(true);
