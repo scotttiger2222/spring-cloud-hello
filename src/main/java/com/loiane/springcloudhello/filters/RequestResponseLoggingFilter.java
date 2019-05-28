@@ -2,6 +2,7 @@ package com.loiane.springcloudhello.filters;
 
 import java.io.IOException;
 
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -21,10 +22,14 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
-@Order(1)
+@Order(2)
 @Slf4j
 public class RequestResponseLoggingFilter implements Filter {
  
+	
+	
+
+
 	Logger	logger = LoggerFactory.getLogger(RequestResponseLoggingFilter.class);
 	
 	
@@ -43,7 +48,13 @@ public class RequestResponseLoggingFilter implements Filter {
         HttpSession mySession=   attr.getRequest().getSession(true);
         mySession.setAttribute("jim", "carry");
         
-        req.getRequestDispatcher(((HttpServletRequest) request).getRequestURI()).forward(req, res);
+  //      req.getRequestDispatcher(((HttpServletRequest) request).getRequestURI()).forward(req, res);
+    
+        
+        
+        
+        
+        chain.doFilter(request, response);
         
     }
 
