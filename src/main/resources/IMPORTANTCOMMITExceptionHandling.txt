@@ -1,0 +1,20 @@
+IMPORTANTCOMMITExceptionHandling
+INCLUDES exceptionhandling.txt
+including restcontrolleradvice that contains methods with @ExceptionHandler(SQLException.class) annotation
+to handle any exception of type SQL, another for NullPointer, FileNotFound etc.
+These exception methods will be invoked automatically if the mentioned type exception occurs in the code
+you can write loggers in it for the entry to logs and create own object as POJO carrying message which can be returned as Json
+
+
+1)Exceptions can be handle in 2 ways: First check the object created by spring boot like Response entiity if it do not have body
+throw your own type of custom exception that can be mentioned in RestControllerAdvice
+
+2)Exception while code is in execution like sql exception, null pointer, Aritmmatic etc,
+you can create a RestControllerAdvice with following annotation on methods@ExceptionHandler(SQLException.class)
+@ExceptionHandler(CustomException.class),@ExceptionHandler(NullPointer.class),@ExceptionHandler(Arithmetic.class),@ExceptionHandler(FileNotFound.class)
+any exception occuring in the code of these above declared type will come to these methods
+you can log the messages here and forward a custom message with customized messages to he rest user
+
+3)Not popular----> response Entity exception object can be made and returned from Controller itself
+it is supposed raised when body of response entity is null or so for example but it is not poular way of doing it
+
