@@ -43,9 +43,8 @@ import com.loiane.springcloudhello.getjson.jsonclient1;
 @RequestMapping("/department")
 public class departmentcontroller {
 
-	private departmentrepository deptrepository;
-	private departmentserviceimpl        deptserviceimpl;
-	private departmentcustomrepository departmentcustomrepository;
+
+	private departmentserviceimpl        departmentserviceimpl;
 	private com.loiane.springcloudhello.getjson.jsonclient1 jsonclient1;
 	private yamlconfig yamlconfig;
 	
@@ -54,11 +53,10 @@ public class departmentcontroller {
 	
 	Logger	logger = LoggerFactory.getLogger(departmentcontroller.class);
 		
- public departmentcontroller(departmentrepository deptrepository, departmentserviceimpl deptserviceimpl,departmentcustomrepository departmentcustomrepository, jsonclient1 jsonclient1, yamlconfig yamlconfig) {
+ public departmentcontroller(departmentrepository deptrepository, departmentserviceimpl departmentserviceimpl,departmentcustomrepository departmentcustomrepository, jsonclient1 jsonclient1, yamlconfig yamlconfig) {
 		super();
-		this.deptrepository = deptrepository;
-		this.deptserviceimpl= deptserviceimpl;
-		this.departmentcustomrepository=departmentcustomrepository;
+
+		this.departmentserviceimpl= departmentserviceimpl;
 		this.jsonclient1 = jsonclient1;
 		this.yamlconfig=yamlconfig;
 	}
@@ -83,7 +81,7 @@ public class departmentcontroller {
 		jsonclient1.jsonclient1gettestjson();
 		
 		
-        return deptserviceimpl.findAll();
+        return departmentserviceimpl.findAll();
     }
 
 	
@@ -97,7 +95,7 @@ public class departmentcontroller {
    
     */	
     	
-    	ResponseEntity<department>	finddepartment= deptrepository.findById(id)
+    	ResponseEntity<department>	finddepartment= departmentserviceimpl.findById(id)
                     .map(record -> ResponseEntity.ok().body(record))
                     .orElse(ResponseEntity.notFound().build());
     	
@@ -141,7 +139,7 @@ public class departmentcontroller {
     	return deptrepository.save(newdepartment);
    */
 	   
-	   return deptserviceimpl.save(newdepartment);
+	   return departmentserviceimpl.save(newdepartment);
 	   
     	
     }
@@ -153,43 +151,43 @@ public class departmentcontroller {
     @PutMapping("/{id}")
     department replacedepartment(@RequestBody department newdepartment, @PathVariable Integer id) {
 
-      return deptrepository.findById(id)
+      return departmentserviceimpl.findById(id)
         .map(department -> {
         	department.setLoc(newdepartment.getLoc());
         	department.setDepartmentname(newdepartment.getDepartmentname());
-          return deptrepository.save(newdepartment);
+          return departmentserviceimpl.save(newdepartment);
         })
         .orElseGet(() -> {
         	newdepartment.setDeptno(id);
-          return deptrepository.save(newdepartment);
+          return departmentserviceimpl.save(newdepartment);
         });
     }
     
     
     @DeleteMapping("/{id}")
     void deletedepartment(@PathVariable Integer id) {
-      deptrepository.deleteById(id);
+    	departmentserviceimpl.deleteById(id);
     }
     
 	
     
     
-    
+    //custom Queries
     @GetMapping(path = {"/{deptno}/{departmentname}"})
     department finddepartmentbydeptnoanddepartmentnamenamedparams(@PathVariable Integer deptno, @PathVariable String departmentname ) {
     	
-    	return departmentcustomrepository.finddepartmentbydeptnoanddepartmentnamenamedparams(deptno, departmentname);
+    	return departmentserviceimpl.finddepartmentbydeptnoanddepartmentnamenamedparams(deptno, departmentname);
     	
     	
     }
     
     
     
-    
+    //custome Queries
     @GetMapping("/joinfindalldepartmentandtheiremployee")
     List <Object> joinfindalldepartmentandtheiremployeebydeptnonamedparams() {
     	
-                 return  departmentcustomrepository.fetchdeptempdataleftjoin();
+                 return  departmentserviceimpl.fetchdeptempdataleftjoin();
     	
     	
     }
