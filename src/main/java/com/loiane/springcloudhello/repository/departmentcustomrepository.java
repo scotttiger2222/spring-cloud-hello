@@ -20,7 +20,8 @@ public interface departmentcustomrepository extends JpaRepository<department, In
 			  @Param("departmentname") String departmentname);
 	
 	@Query(value ="SELECT d.deptno,d.departmentname,d.loc,e.empno, e.ename, e.job,e.mgr,e.sal " + 
-			"FROM department d LEFT JOIN employee e on d.deptno=e.deptno",nativeQuery = true)
+			"FROM department d LEFT JOIN employee e on d.deptno=e.deptno",nativeQuery = true)       
+	
 	
 		List<Object> fetchdeptempdataleftjoin();
 

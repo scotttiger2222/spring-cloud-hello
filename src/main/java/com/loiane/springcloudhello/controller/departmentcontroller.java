@@ -54,7 +54,7 @@ public class departmentcontroller {
 	
 	Logger	logger = LoggerFactory.getLogger(departmentcontroller.class);
 		
- public departmentcontroller(departmentrepository deptrepository ,departmentserviceimpl deptserviceimpl,departmentcustomrepository departmentcustomrepository, jsonclient1 jsonclient1, yamlconfig yamlconfig) {
+ public departmentcontroller(departmentrepository deptrepository, departmentserviceimpl deptserviceimpl,departmentcustomrepository departmentcustomrepository, jsonclient1 jsonclient1, yamlconfig yamlconfig) {
 		super();
 		this.deptrepository = deptrepository;
 		this.deptserviceimpl= deptserviceimpl;
@@ -83,7 +83,7 @@ public class departmentcontroller {
 		jsonclient1.jsonclient1gettestjson();
 		
 		
-        return deptrepository.findAll();
+        return deptserviceimpl.findAll();
     }
 
 	

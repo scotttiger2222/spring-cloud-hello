@@ -1,0 +1,9 @@
+COMMITenablinghazelcastcacheinhibernate
+-pom.xml now include hazelcast cache
+-config bean for hazelcast is created hazlecastconfigclass:Config hazelCastConfig()
+-Config is standard Bean of hazelcast which set parameter for hazelcast in spring container
+-main class is annotated with @EnableCaching to enable caching
+-service methods in departmentserviceimpl are annotadte with @Cacheable
+-methods included in service class of deprtment that were direct from repository
+-application.properties modified for full hibernate query loggin support
+-added cachedetails.txt for related details

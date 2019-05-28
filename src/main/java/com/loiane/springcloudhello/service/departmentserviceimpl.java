@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -36,5 +37,12 @@ public class departmentserviceimpl  implements departmentservice{
 	  }
 	
 	
+	  @Cacheable(value="cloudhellocache",unless="#result==null")
+	  public  List findAll(){
+		  
+		  return departmentrepository.findAll(); 
+		  
+	  }
+	  
 	
 }
